@@ -1,0 +1,22 @@
+{
+  "run_id": "example-run-001",
+  "topic": "freelancer invoicing issues",
+  "sources": ["reddit", "x"],
+  "query_terms": [
+    "freelancer invoice problem",
+    "invoice failed",
+    "payment delay",
+    "#freelancer",
+    "freelancer payment issue"
+  ],
+  "date_range": {"from": "2024-06-01", "to": "2024-08-30"},
+  "created_at": "2024-08-30T12:00:00Z",
+  "items": [],
+  "clusters": [],
+  "summary": {
+    "top_pain_points": [],
+    "recommended_actions": [],
+    "product_hypotheses": [],
+    "top_sources": []
+  }
+}

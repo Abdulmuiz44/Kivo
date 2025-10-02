@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+
+# FastAPI / Uvicorn
+.env
+
+# Flutter
+build/
+.dart_tool/
+android/
+ios/
+linux/
+macos/
+windows/
+web/
+!.gitignore
+
+# Misc
+.idea/
+.vscode/
+/data/
+*.db
+*.log
