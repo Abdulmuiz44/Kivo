@@ -1,15 +1,13 @@
-import * as Linking from 'expo-linking';
 import PropTypes from 'prop-types';
-import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
 
 import supabaseClient from '../lib/supabase';
 
 const AuthContext = createContext({
   session: null,
   loading: true,
-  signInWithEmail: async () => {},
+  signInWithGoogle: async () => {},
   signOut: async () => {},
-  lastSentEmail: null,
   error: null,
 });
 
@@ -17,8 +15,6 @@ export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [lastSentEmail, setLastSentEmail] = useState(null);
-  const deepLinkProcessed = useRef(false);
 
   useEffect(() => {
     let mounted = true;
@@ -48,64 +44,39 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  useEffect(() => {
-    const handleDeepLink = async ({ url }) => {
-      if (deepLinkProcessed.current) return;
-      try {
-        const { data, error: linkError } = await supabaseClient.auth.getSessionFromUrl({ url, storeSession: true });
-        if (linkError) {
-          setError(linkError.message);
-          return;
-        }
-        if (data.session) {
-          setSession(data.session);
-          setError(null);
-        }
-        deepLinkProcessed.current = true;
-      } catch (linkException) {
-        setError(linkException.message);
-      }
-    };
-
-    const subscription = Linking.addEventListener('url', handleDeepLink);
-
-    Linking.getInitialURL().then((initialUrl) => {
-      if (initialUrl) {
-        handleDeepLink({ url: initialUrl });
-      }
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  const signInWithEmail = async (email) => {
+  const signInWithGoogle = useCallback(async ({ idToken, accessToken }) => {
     setLoading(true);
     setError(null);
     try {
-      const redirectUrl = Linking.createURL('/auth/callback');
-      const { error: signInError } = await supabaseClient.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: redirectUrl,
-        },
+      const { data, error: signInError } = await supabaseClient.auth.signInWithIdToken({
+        provider: 'google',
+        token: idToken,
+        access_token: accessToken,
       });
+
       if (signInError) {
         setError(signInError.message);
         return { success: false, error: signInError };
       }
-      setLastSentEmail(email);
-      return { success: true };
+
+      if (data.session) {
+        setSession(data.session);
+        setError(null);
+        return { success: true };
+      }
+
+      const missingSessionError = new Error('Google sign in did not return a session.');
+      setError(missingSessionError.message);
+      return { success: false, error: missingSessionError };
     } catch (signInException) {
       setError(signInException.message);
       return { success: false, error: signInException };
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     setLoading(true);
     try {
       await supabaseClient.auth.signOut();
@@ -115,18 +86,17 @@ export function AuthProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const value = useMemo(
     () => ({
       session,
       loading,
       error,
-      signInWithEmail,
+      signInWithGoogle,
       signOut,
-      lastSentEmail,
     }),
-    [session, loading, error, lastSentEmail],
+    [session, loading, error, signInWithGoogle, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

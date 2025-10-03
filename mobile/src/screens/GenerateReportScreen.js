@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../context/AuthContext';
 import supabaseClient from '../lib/supabase';
+import LogoIcon from '../components/LogoIcon';
 
 const POLL_INTERVAL_MS = 2500;
 
@@ -157,6 +158,7 @@ export default function GenerateReportScreen({ route }) {
 
   return (
     <View style={styles.container}>
+      <LogoIcon size={56} />
       {loading ? <ActivityIndicator color="#4C9FFF" /> : null}
       <Text style={styles.message}>Project: {projectId}</Text>
       <Text style={styles.status}>{statusCopy}</Text>
@@ -177,6 +179,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
+    gap: 16,
   },
   message: {
     color: '#FFFFFF',

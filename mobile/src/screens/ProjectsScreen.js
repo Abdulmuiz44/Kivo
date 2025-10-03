@@ -4,6 +4,7 @@ import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, Text, Touchabl
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../context/AuthContext';
+import LogoIcon from '../components/LogoIcon';
 import supabaseClient from '../lib/supabase';
 
 function ProjectCard({ project, onOpen }) {
@@ -68,9 +69,12 @@ export default function ProjectsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View>
+        <View style={styles.headerTitleRow}>
+          <LogoIcon size={36} />
+          <View style={styles.headerTextBlock}>
           <Text style={styles.title}>Projects</Text>
           <Text style={styles.subtitle}>Manage your Nexa research briefs.</Text>
+          </View>
         </View>
         <TouchableOpacity style={styles.signOutButton} onPress={signOut}>
           <Text style={styles.signOutText}>Sign out</Text>
@@ -118,6 +122,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
+  },
+  headerTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  headerTextBlock: {
+    flexShrink: 1,
   },
   title: {
     color: '#FFFFFF',

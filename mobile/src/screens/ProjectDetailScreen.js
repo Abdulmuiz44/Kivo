@@ -4,6 +4,7 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View
 import { useRoute } from '@react-navigation/native';
 
 import supabaseClient from '../lib/supabase';
+import LogoIcon from '../components/LogoIcon';
 
 export default function ProjectDetailScreen({ navigation }) {
   const route = useRoute();
@@ -72,6 +73,9 @@ export default function ProjectDetailScreen({ navigation }) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.logoRow}>
+        <LogoIcon size={40} />
+      </View>
       <Text style={styles.title}>{project.title}</Text>
       <Text style={styles.sectionHeading}>Description</Text>
       <Text style={styles.body}>{project.description || 'No description provided.'}</Text>
@@ -105,6 +109,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#0C1A2A',
     padding: 20,
     flexGrow: 1,
+  },
+  logoRow: {
+    marginBottom: 12,
   },
   centered: {
     flex: 1,

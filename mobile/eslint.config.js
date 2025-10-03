@@ -7,7 +7,12 @@ module.exports = defineConfig([
   {
     ignores: ["dist/*"],
     settings: {
-      'import/core-modules': ['expo-linking', 'expo-constants'],
+      'import/core-modules': [
+        'expo-linking',
+        'expo-constants',
+        'expo-web-browser',
+        'expo-auth-session/providers/google',
+      ],
     },
   }
 ]);

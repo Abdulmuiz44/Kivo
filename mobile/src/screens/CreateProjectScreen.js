@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../context/AuthContext';
 import supabaseClient from '../lib/supabase';
+import LogoIcon from '../components/LogoIcon';
 
 const defaultPlatforms = ['Reddit', 'X'];
 
@@ -61,6 +62,9 @@ export default function CreateProjectScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.logoRow}>
+        <LogoIcon size={40} />
+      </View>
       <Text style={styles.title}>New Project</Text>
       <Text style={styles.subtitle}>Set up a quick Nexa research brief.</Text>
 
@@ -98,6 +102,10 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#0C1A2A',
     flexGrow: 1,
+  },
+  logoRow: {
+    alignItems: 'flex-start',
+    marginBottom: 12,
   },
   title: {
     fontSize: 24,

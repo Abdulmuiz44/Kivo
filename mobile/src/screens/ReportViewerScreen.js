@@ -4,6 +4,7 @@ import { ActivityIndicator, Alert, ScrollView, Share, StyleSheet, Text, Touchabl
 import Constants from 'expo-constants';
 
 import supabaseClient from '../lib/supabase';
+import LogoIcon from '../components/LogoIcon';
 
 export default function ReportViewerScreen({ route }) {
   const { reportId } = route.params ?? {};
@@ -102,6 +103,9 @@ export default function ReportViewerScreen({ route }) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.logoRow}>
+        <LogoIcon size={40} />
+      </View>
       <Text style={styles.title}>Quick Research Report</Text>
       <Text style={styles.sectionHeading}>Summary</Text>
       <Text style={styles.body}>{payload.summary_text || 'Summary not provided.'}</Text>
@@ -179,6 +183,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#0C1A2A',
     padding: 20,
     flexGrow: 1,
+  },
+  logoRow: {
+    marginBottom: 12,
+    alignItems: 'flex-start',
   },
   centered: {
     flex: 1,
