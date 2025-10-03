@@ -9,6 +9,7 @@ const AuthContext = createContext({
   signInWithGoogle: async () => {},
   signOut: async () => {},
   error: null,
+  setSession: () => {},
 });
 
 export function AuthProvider({ children }) {
@@ -95,8 +96,9 @@ export function AuthProvider({ children }) {
       error,
       signInWithGoogle,
       signOut,
+      setSession,
     }),
-    [session, loading, error, signInWithGoogle, signOut],
+    [session, loading, error, signInWithGoogle, signOut, setSession],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
