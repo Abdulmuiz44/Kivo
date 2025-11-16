@@ -1,10 +1,104 @@
+'use strict';
 (() => {
   var e = {};
   ((e.id = 820),
     (e.ids = [820, 660]),
     (e.modules = {
-      118: (e, t, r) => {
-        'use strict';
+      748: (e, t) => {
+        Object.defineProperty(t, 'l', {
+          enumerable: !0,
+          get: function () {
+            return function e(t, r) {
+              return r in t
+                ? t[r]
+                : 'then' in t && 'function' == typeof t.then
+                  ? t.then((t) => e(t, r))
+                  : 'function' == typeof t && 'default' === r
+                    ? t
+                    : void 0;
+            };
+          },
+        });
+      },
+      203: (e, t, r) => {
+        (r.r(t),
+          r.d(t, {
+            config: () => h,
+            default: () => p,
+            getServerSideProps: () => g,
+            getStaticPaths: () => f,
+            getStaticProps: () => c,
+            reportWebVitals: () => y,
+            routeModule: () => v,
+            unstable_getServerProps: () => P,
+            unstable_getServerSideProps: () => x,
+            unstable_getStaticParams: () => _,
+            unstable_getStaticPaths: () => m,
+            unstable_getStaticProps: () => b,
+          }));
+        var n = r(490),
+          o = r(254),
+          l = r(748),
+          a = r(936),
+          i = r.n(a),
+          u = r(545),
+          d = r.n(u),
+          s = r(969);
+        let p = (0, l.l)(s, 'default'),
+          c = (0, l.l)(s, 'getStaticProps'),
+          f = (0, l.l)(s, 'getStaticPaths'),
+          g = (0, l.l)(s, 'getServerSideProps'),
+          h = (0, l.l)(s, 'config'),
+          y = (0, l.l)(s, 'reportWebVitals'),
+          b = (0, l.l)(s, 'unstable_getStaticProps'),
+          m = (0, l.l)(s, 'unstable_getStaticPaths'),
+          _ = (0, l.l)(s, 'unstable_getStaticParams'),
+          P = (0, l.l)(s, 'unstable_getServerProps'),
+          x = (0, l.l)(s, 'unstable_getServerSideProps'),
+          v = new n.PagesRouteModule({
+            definition: {
+              kind: o.x.PAGES,
+              page: '/_error',
+              pathname: '/_error',
+              bundlePath: '',
+              filename: '',
+            },
+            components: { App: d(), Document: i() },
+            userland: s,
+          });
+      },
+      545: (e, t, r) => {
+        (Object.defineProperty(t, '__esModule', { value: !0 }),
+          Object.defineProperty(t, 'default', {
+            enumerable: !0,
+            get: function () {
+              return u;
+            },
+          }));
+        let n = r(721),
+          o = r(997),
+          l = n._(r(689)),
+          a = r(341);
+        async function i(e) {
+          let { Component: t, ctx: r } = e;
+          return { pageProps: await (0, a.loadGetInitialProps)(t, r) };
+        }
+        class u extends l.default.Component {
+          render() {
+            let { Component: e, pageProps: t } = this.props;
+            return (0, o.jsx)(e, { ...t });
+          }
+        }
+        ((u.origGetInitialProps = i),
+          (u.getInitialProps = i),
+          ('function' == typeof t.default ||
+            ('object' == typeof t.default && null !== t.default)) &&
+            void 0 === t.default.__esModule &&
+            (Object.defineProperty(t.default, '__esModule', { value: !0 }),
+            Object.assign(t.default, t),
+            (e.exports = t.default)));
+      },
+      969: (e, t, r) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           Object.defineProperty(t, 'default', {
             enumerable: !0,
@@ -14,51 +108,19 @@
           }));
         let n = r(721),
           o = r(997),
-          i = n._(r(689)),
-          a = r(345);
-        async function l(e) {
-          let { Component: t, ctx: r } = e;
-          return { pageProps: await (0, a.loadGetInitialProps)(t, r) };
-        }
-        class s extends i.default.Component {
-          render() {
-            let { Component: e, pageProps: t } = this.props;
-            return (0, o.jsx)(e, Object.assign({}, t));
-          }
-        }
-        ((s.origGetInitialProps = l),
-          (s.getInitialProps = l),
-          ('function' == typeof t.default ||
-            ('object' == typeof t.default && null !== t.default)) &&
-            void 0 === t.default.__esModule &&
-            (Object.defineProperty(t.default, '__esModule', { value: !0 }),
-            Object.assign(t.default, t),
-            (e.exports = t.default)));
-      },
-      37: (e, t, r) => {
-        'use strict';
-        (Object.defineProperty(t, '__esModule', { value: !0 }),
-          Object.defineProperty(t, 'default', {
-            enumerable: !0,
-            get: function () {
-              return d;
-            },
-          }));
-        let n = r(721),
-          o = r(997),
-          i = n._(r(689)),
-          a = n._(r(766)),
-          l = {
+          l = n._(r(689)),
+          a = n._(r(642)),
+          i = {
             400: 'Bad Request',
             404: 'This page could not be found',
             405: 'Method Not Allowed',
             500: 'Internal Server Error',
           };
-        function s(e) {
+        function u(e) {
           let { res: t, err: r } = e;
           return { statusCode: t && t.statusCode ? t.statusCode : r ? r.statusCode : 404 };
         }
-        let u = {
+        let d = {
           error: {
             fontFamily:
               'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
@@ -81,12 +143,12 @@
           h2: { fontSize: 14, fontWeight: 400, lineHeight: '28px' },
           wrap: { display: 'inline-block' },
         };
-        class d extends i.default.Component {
+        class s extends l.default.Component {
           render() {
             let { statusCode: e, withDarkMode: t = !0 } = this.props,
-              r = this.props.title || l[e] || 'An unexpected error has occurred';
+              r = this.props.title || i[e] || 'An unexpected error has occurred';
             return (0, o.jsxs)('div', {
-              style: u.error,
+              style: d.error,
               children: [
                 (0, o.jsx)(a.default, {
                   children: (0, o.jsx)('title', {
@@ -96,7 +158,7 @@
                   }),
                 }),
                 (0, o.jsxs)('div', {
-                  style: u.desc,
+                  style: d.desc,
                   children: [
                     (0, o.jsx)('style', {
                       dangerouslySetInnerHTML: {
@@ -108,12 +170,12 @@
                       },
                     }),
                     e
-                      ? (0, o.jsx)('h1', { className: 'next-error-h1', style: u.h1, children: e })
+                      ? (0, o.jsx)('h1', { className: 'next-error-h1', style: d.h1, children: e })
                       : null,
                     (0, o.jsx)('div', {
-                      style: u.wrap,
+                      style: d.wrap,
                       children: (0, o.jsxs)('h2', {
-                        style: u.h2,
+                        style: d.h2,
                         children: [
                           this.props.title || e
                             ? r
@@ -131,9 +193,9 @@
             });
           }
         }
-        ((d.displayName = 'ErrorPage'),
-          (d.getInitialProps = s),
-          (d.origGetInitialProps = s),
+        ((s.displayName = 'ErrorPage'),
+          (s.getInitialProps = u),
+          (s.origGetInitialProps = u),
           ('function' == typeof t.default ||
             ('object' == typeof t.default && null !== t.default)) &&
             void 0 === t.default.__esModule &&
@@ -141,8 +203,7 @@
             Object.assign(t.default, t),
             (e.exports = t.default)));
       },
-      382: (e, t) => {
-        'use strict';
+      983: (e, t) => {
         function r(e) {
           let { ampFirst: t = !1, hybrid: r = !1, hasQuery: n = !1 } = void 0 === e ? {} : e;
           return t || (r && n);
@@ -155,8 +216,7 @@
             },
           }));
       },
-      766: (e, t, r) => {
-        'use strict';
+      642: (e, t, r) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           (function (e, t) {
             for (var r in t) Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -165,26 +225,26 @@
               return h;
             },
             defaultHead: function () {
-              return c;
+              return p;
             },
           }));
         let n = r(721),
           o = r(555),
-          i = r(997),
+          l = r(997),
           a = o._(r(689)),
-          l = n._(r(27)),
-          s = r(377),
-          u = r(549),
-          d = r(382);
-        function c(e) {
+          i = n._(r(889)),
+          u = r(377),
+          d = r(549),
+          s = r(983);
+        function p(e) {
           void 0 === e && (e = !1);
-          let t = [(0, i.jsx)('meta', { charSet: 'utf-8' })];
+          let t = [(0, l.jsx)('meta', { charSet: 'utf-8' })];
           return (
-            e || t.push((0, i.jsx)('meta', { name: 'viewport', content: 'width=device-width' })),
+            e || t.push((0, l.jsx)('meta', { name: 'viewport', content: 'width=device-width' })),
             t
           );
         }
-        function p(e, t) {
+        function c(e, t) {
           return 'string' == typeof t || 'number' == typeof t
             ? e
             : t.type === a.default.Fragment
@@ -196,14 +256,14 @@
                 )
               : e.concat(t);
         }
-        r(803);
+        r(855);
         let f = ['name', 'httpEquiv', 'charSet', 'itemProp'];
         function g(e, t) {
           let { inAmpMode: r } = t;
           return e
-            .reduce(p, [])
+            .reduce(c, [])
             .reverse()
-            .concat(c(r).reverse())
+            .concat(p(r).reverse())
             .filter(
               (function () {
                 let e = new Set(),
@@ -211,32 +271,32 @@
                   r = new Set(),
                   n = {};
                 return (o) => {
-                  let i = !0,
+                  let l = !0,
                     a = !1;
                   if (o.key && 'number' != typeof o.key && o.key.indexOf('$') > 0) {
                     a = !0;
                     let t = o.key.slice(o.key.indexOf('$') + 1);
-                    e.has(t) ? (i = !1) : e.add(t);
+                    e.has(t) ? (l = !1) : e.add(t);
                   }
                   switch (o.type) {
                     case 'title':
                     case 'base':
-                      t.has(o.type) ? (i = !1) : t.add(o.type);
+                      t.has(o.type) ? (l = !1) : t.add(o.type);
                       break;
                     case 'meta':
                       for (let e = 0, t = f.length; e < t; e++) {
                         let t = f[e];
                         if (o.props.hasOwnProperty(t)) {
-                          if ('charSet' === t) r.has(t) ? (i = !1) : r.add(t);
+                          if ('charSet' === t) r.has(t) ? (l = !1) : r.add(t);
                           else {
                             let e = o.props[t],
                               r = n[t] || new Set();
-                            ('name' !== t || !a) && r.has(e) ? (i = !1) : (r.add(e), (n[t] = r));
+                            ('name' !== t || !a) && r.has(e) ? (l = !1) : (r.add(e), (n[t] = r));
                           }
                         }
                       }
                   }
-                  return i;
+                  return l;
                 };
               })()
             )
@@ -251,7 +311,7 @@
                   e.props.href.startsWith(t)
                 )
               ) {
-                let t = Object.assign({}, e.props || {});
+                let t = { ...(e.props || {}) };
                 return (
                   (t['data-href'] = t.href),
                   (t.href = void 0),
@@ -264,12 +324,12 @@
         }
         let h = function (e) {
           let { children: t } = e,
-            r = (0, a.useContext)(s.AmpStateContext),
-            n = (0, a.useContext)(u.HeadManagerContext);
-          return (0, i.jsx)(l.default, {
+            r = (0, a.useContext)(u.AmpStateContext),
+            n = (0, a.useContext)(d.HeadManagerContext);
+          return (0, l.jsx)(i.default, {
             reduceComponentsToState: g,
             headManager: n,
-            inAmpMode: (0, d.isInAmpMode)(r),
+            inAmpMode: (0, s.isInAmpMode)(r),
             children: t,
           });
         };
@@ -279,8 +339,7 @@
           Object.assign(t.default, t),
           (e.exports = t.default));
       },
-      27: (e, t, r) => {
-        'use strict';
+      889: (e, t, r) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           Object.defineProperty(t, 'default', {
             enumerable: !0,
@@ -290,11 +349,11 @@
           }));
         let n = r(689),
           o = () => {},
-          i = () => {};
+          l = () => {};
         function a(e) {
           var t;
           let { headManager: r, reduceComponentsToState: a } = e;
-          function l() {
+          function i() {
             if (r && r.mountedInstances) {
               let t = n.Children.toArray(Array.from(r.mountedInstances).filter(Boolean));
               r.updateHead(a(t, e));
@@ -302,7 +361,7 @@
           }
           return (
             null == r || null == (t = r.mountedInstances) || t.add(e.children),
-            l(),
+            i(),
             o(() => {
               var t;
               return (
@@ -315,13 +374,13 @@
             }),
             o(
               () => (
-                r && (r._pendingUpdate = l),
+                r && (r._pendingUpdate = i),
                 () => {
-                  r && (r._pendingUpdate = l);
+                  r && (r._pendingUpdate = i);
                 }
               )
             ),
-            i(
+            l(
               () => (
                 r && r._pendingUpdate && (r._pendingUpdate(), (r._pendingUpdate = null)),
                 () => {
@@ -333,8 +392,7 @@
           );
         }
       },
-      803: (e, t) => {
-        'use strict';
+      855: (e, t) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           Object.defineProperty(t, 'warnOnce', {
             enumerable: !0,
@@ -344,73 +402,7 @@
           }));
         let r = (e) => {};
       },
-      748: (e, t) => {
-        'use strict';
-        Object.defineProperty(t, 'l', {
-          enumerable: !0,
-          get: function () {
-            return function e(t, r) {
-              return r in t
-                ? t[r]
-                : 'then' in t && 'function' == typeof t.then
-                  ? t.then((t) => e(t, r))
-                  : 'function' == typeof t && 'default' === r
-                    ? t
-                    : void 0;
-            };
-          },
-        });
-      },
-      203: (e, t, r) => {
-        'use strict';
-        (r.r(t),
-          r.d(t, {
-            config: () => h,
-            default: () => c,
-            getServerSideProps: () => g,
-            getStaticPaths: () => f,
-            getStaticProps: () => p,
-            reportWebVitals: () => y,
-            routeModule: () => v,
-            unstable_getServerProps: () => P,
-            unstable_getServerSideProps: () => x,
-            unstable_getStaticParams: () => _,
-            unstable_getStaticPaths: () => m,
-            unstable_getStaticProps: () => b,
-          }));
-        var n = r(490),
-          o = r(254),
-          i = r(748),
-          a = r(719),
-          l = r.n(a),
-          s = r(118),
-          u = r.n(s),
-          d = r(37);
-        let c = (0, i.l)(d, 'default'),
-          p = (0, i.l)(d, 'getStaticProps'),
-          f = (0, i.l)(d, 'getStaticPaths'),
-          g = (0, i.l)(d, 'getServerSideProps'),
-          h = (0, i.l)(d, 'config'),
-          y = (0, i.l)(d, 'reportWebVitals'),
-          b = (0, i.l)(d, 'unstable_getStaticProps'),
-          m = (0, i.l)(d, 'unstable_getStaticPaths'),
-          _ = (0, i.l)(d, 'unstable_getStaticParams'),
-          P = (0, i.l)(d, 'unstable_getServerProps'),
-          x = (0, i.l)(d, 'unstable_getServerSideProps'),
-          v = new n.PagesRouteModule({
-            definition: {
-              kind: o.x.PAGES,
-              page: '/_error',
-              pathname: '/_error',
-              bundlePath: '',
-              filename: '',
-            },
-            components: { App: u(), Document: l() },
-            userland: d,
-          });
-      },
       254: (e, t) => {
-        'use strict';
         var r;
         (Object.defineProperty(t, 'x', {
           enumerable: !0,
@@ -426,31 +418,24 @@
           })(r || (r = {})));
       },
       377: (e, t, r) => {
-        'use strict';
         e.exports = r(490).vendored.contexts.AmpContext;
       },
       549: (e, t, r) => {
-        'use strict';
         e.exports = r(490).vendored.contexts.HeadManagerContext;
       },
       785: (e) => {
-        'use strict';
         e.exports = require('next/dist/compiled/next-server/pages.runtime.prod.js');
       },
       689: (e) => {
-        'use strict';
         e.exports = require('react');
       },
       997: (e) => {
-        'use strict';
         e.exports = require('react/jsx-runtime');
       },
       17: (e) => {
-        'use strict';
         e.exports = require('path');
       },
       555: (e, t) => {
-        'use strict';
         function r(e) {
           if ('function' != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -465,11 +450,11 @@
           var n = r(t);
           if (n && n.has(e)) return n.get(e);
           var o = { __proto__: null },
-            i = Object.defineProperty && Object.getOwnPropertyDescriptor;
+            l = Object.defineProperty && Object.getOwnPropertyDescriptor;
           for (var a in e)
             if ('default' !== a && Object.prototype.hasOwnProperty.call(e, a)) {
-              var l = i ? Object.getOwnPropertyDescriptor(e, a) : null;
-              l && (l.get || l.set) ? Object.defineProperty(o, a, l) : (o[a] = e[a]);
+              var i = l ? Object.getOwnPropertyDescriptor(e, a) : null;
+              i && (i.get || i.set) ? Object.defineProperty(o, a, i) : (o[a] = e[a]);
             }
           return ((o.default = e), n && n.set(e, o), o);
         };
@@ -478,6 +463,6 @@
   var t = require('../webpack-runtime.js');
   t.C(e);
   var r = (e) => t((t.s = e)),
-    n = t.X(0, [719], () => r(203));
+    n = t.X(0, [936], () => r(203));
   module.exports = n;
 })();

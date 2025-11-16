@@ -20,6 +20,6 @@
   var r = require('../webpack-runtime.js');
   r.C(e);
   var s = (e) => r((r.s = e)),
-    t = r.X(0, [719], () => s(719));
+    t = r.X(0, [936], () => s(936));
   module.exports = t;
 })();

@@ -4,7 +4,7 @@
   ((e.id = 888),
     (e.ids = [888]),
     (e.modules = {
-      118: (e, t, r) => {
+      545: (e, t, r) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           Object.defineProperty(t, 'default', {
             enumerable: !0,
@@ -15,7 +15,7 @@
         let n = r(721),
           o = r(997),
           i = n._(r(689)),
-          u = r(345);
+          u = r(341);
         async function s(e) {
           let { Component: t, ctx: r } = e;
           return { pageProps: await (0, u.loadGetInitialProps)(t, r) };
@@ -23,7 +23,7 @@
         class a extends i.default.Component {
           render() {
             let { Component: e, pageProps: t } = this.props;
-            return (0, o.jsx)(e, Object.assign({}, t));
+            return (0, o.jsx)(e, { ...t });
           }
         }
         ((a.origGetInitialProps = s),
@@ -35,7 +35,7 @@
             Object.assign(t.default, t),
             (e.exports = t.default)));
       },
-      345: (e, t) => {
+      341: (e, t) => {
         (Object.defineProperty(t, '__esModule', { value: !0 }),
           (function (e, t) {
             for (var r in t) Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
@@ -185,6 +185,6 @@
     }));
   var t = require('../webpack-runtime.js');
   t.C(e);
-  var r = t((t.s = 118));
+  var r = t((t.s = 545));
   module.exports = r;
 })();

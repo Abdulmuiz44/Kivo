@@ -2,8 +2,7 @@
   "version": 1,
   "config": {
     "env": {
-      "SUPABASE_URL": "",
-      "SUPABASE_ANON_KEY": "",
+      "MONGODB_URI": "mongodb://localhost:27017/kivo",
       "REDIS_URL": "redis://localhost:6379",
       "XAI_API_KEY": ""
     },
@@ -83,7 +82,7 @@
       "craCompat": false,
       "esmExternals": true,
       "fullySpecified": false,
-      "outputFileTracingRoot": "/workspaces/Kivo",
+      "outputFileTracingRoot": "/home/runner/work/Kivo/Kivo",
       "swcTraceProfiling": false,
       "forceSwcTransforms": false,
       "largePageDataBytes": 128000,
@@ -162,7 +161,7 @@
     },
     "configFileName": "next.config.js"
   },
-  "appDir": "/workspaces/Kivo",
+  "appDir": "/home/runner/work/Kivo/Kivo",
   "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
