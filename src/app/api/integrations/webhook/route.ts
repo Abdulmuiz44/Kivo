@@ -42,8 +42,10 @@ export async function POST(request: NextRequest) {
 
     await axios.post(webhookUrl, payload);
 
-    return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ message: 'Webhook sent successfully' }, { status: 200 });
+  } catch (error: unknown) {
+    console.error('Webhook error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Webhook failed';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

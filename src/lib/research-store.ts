@@ -1,4 +1,4 @@
-import type { ResearchRequest, ResearchItem, ResearchPayload } from '@/types/research';
+import type { ResearchRequest, ResearchPayload } from '@/types/research';
 
 // In-memory store for research runs (replace with database in production)
 export const researchRuns = new Map<
@@ -11,7 +11,12 @@ export const researchRuns = new Map<
     createdAt: string;
     startedAt?: string;
     finishedAt?: string;
-    summary?: any;
+    summary?: {
+      totalItems: number;
+      painPoints: string[];
+      recommendations: string[];
+      topKeywords: { keyword: string; frequency: number }[];
+    };
     payload?: ResearchPayload;
   }
 >();

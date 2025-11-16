@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { researchRuns } from '@/lib/research-store';
+import type { ResearchItem } from '@/types/research';
 import Papa from 'papaparse';
 
 export async function GET(request: NextRequest, { params }: { params: { runId: string } }) {
@@ -12,7 +13,7 @@ export async function GET(request: NextRequest, { params }: { params: { runId: s
 
   try {
     const payload = run.payload;
-    const data = payload.items.map((item: any) => ({
+    const data = payload.items.map((item: ResearchItem) => ({
       id: item.id,
       text: item.text,
       source: item.source,
@@ -30,7 +31,8 @@ export async function GET(request: NextRequest, { params }: { params: { runId: s
         'Content-Disposition': `attachment; filename="research-${runId}.csv"`,
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    console.error('CSV export error:', error);
     return NextResponse.json({ error: 'Failed to generate CSV' }, { status: 500 });
   }
 }

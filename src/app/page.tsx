@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ResearchForm from '@/components/ResearchForm';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { ResearchRequest } from '@/types/research';
 import axios from 'axios';
@@ -21,8 +20,9 @@ export default function Home() {
       const response = await axios.post('/api/research/run', request);
       const { runId } = response.data;
       router.push(`/research/${runId}`);
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Failed to start research');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { error?: string } } };
+      setError(error?.response?.data?.error || 'Failed to start research');
       setLoading(false);
     }
   };

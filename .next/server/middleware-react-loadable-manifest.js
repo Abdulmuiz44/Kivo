@@ -1,0 +1,2 @@
+self.__REACT_LOADABLE_MANIFEST =
+  '{"node_modules/.pnpm/next@14.2.0_@babel+core@7.28.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js -> ../pages/_app":{"id":2243,"files":["static/chunks/243.b3ef2a36d877aa01.js"]},"node_modules/.pnpm/next@14.2.0_@babel+core@7.28.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js -> ../pages/_error":{"id":4843,"files":["static/chunks/843.61e2df3de5f26765.js"]}}';

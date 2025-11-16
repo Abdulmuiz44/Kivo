@@ -11,7 +11,7 @@ import {
   clusterItems,
   generateSummary,
 } from '@/lib/research-pipeline';
-import { cacheSet, cacheGet } from '@/lib/redis';
+import { cacheSet } from '@/lib/redis';
 import { rateLimit } from '@/lib/middleware';
 import { researchRuns } from '@/lib/research-store';
 
@@ -45,8 +45,9 @@ export async function POST(request: NextRequest) {
       },
       { status: 202 }
     );
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Invalid request' }, { status: 400 });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Invalid request';
+    return NextResponse.json({ error: errorMessage }, { status: 400 });
   }
 }
 
@@ -103,15 +104,19 @@ async function processResearch(runId: string, request: ResearchRequest) {
     run.status = 'completed';
     run.progress = 100;
     run.finishedAt = new Date().toISOString();
-    run.summary = summary;
+    run.summary = {
+      totalItems: uniqueItems.length,
+      painPoints: summary.topPainPoints,
+      recommendations: summary.recommendedActions,
+      topKeywords: [], // Keywords are already in payload
+    };
     run.payload = payload;
 
     // Cache results
-    await cacheSet(`research:${runId}:summary`, summary, 3600);
-    await cacheSet(`research:${runId}:payload`, payload, 3600);
-  } catch (error: any) {
+    await cacheSet(`research:${runId}`, run, 3600);
+  } catch (error: unknown) {
     run.status = 'failed';
-    run.message = error.message;
+    run.message = error instanceof Error ? error.message : 'Processing failed';
   }
 }
 

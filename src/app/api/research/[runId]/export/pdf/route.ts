@@ -40,7 +40,8 @@ export async function GET(request: NextRequest, { params }: { params: { runId: s
         'Content-Disposition': `attachment; filename="research-${runId}.pdf"`,
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    console.error('PDF export error:', error);
     return NextResponse.json({ error: 'Failed to generate PDF' }, { status: 500 });
   }
 }

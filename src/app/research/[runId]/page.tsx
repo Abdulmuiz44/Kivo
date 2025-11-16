@@ -30,8 +30,9 @@ export default function ResearchPage() {
           const payloadResponse = await axios.get(`/api/research/${runId}/payload`);
           setPayload(payloadResponse.data);
         }
-      } catch (err: any) {
-        setError(err.response?.data?.error || 'Failed to fetch research data');
+      } catch (err: unknown) {
+        console.error('Failed to fetch research data:', err);
+        setError('Failed to fetch research data');
       }
     };
 
