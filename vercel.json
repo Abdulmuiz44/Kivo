@@ -6,9 +6,8 @@
   "framework": "nextjs",
   "regions": ["iad1"],
   "env": {
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-    "REDIS_URL": "@redis_url"
+    "MONGODB_URI": "@mongodb_uri",
+    "REDIS_URL": "@redis_url",
+    "XAI_API_KEY": "@xai_api_key"
   }
 }

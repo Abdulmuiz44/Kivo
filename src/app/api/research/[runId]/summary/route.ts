@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { researchRuns } from '@/lib/research-store';
+import { getResearchRun } from '@/lib/research-store';
 import { cacheGet } from '@/lib/redis';
 
 export async function GET(request: NextRequest, { params }: { params: { runId: string } }) {
@@ -11,7 +11,7 @@ export async function GET(request: NextRequest, { params }: { params: { runId: s
     return NextResponse.json(cached);
   }
 
-  const run = researchRuns.get(runId);
+  const run = await getResearchRun(runId);
 
   if (!run || !run.summary) {
     return NextResponse.json({ error: 'Summary not available' }, { status: 404 });

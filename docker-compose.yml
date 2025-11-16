@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  mongodb:
+    image: mongo:7
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_DATABASE=kivo
+    volumes:
+      - mongodb_data:/data/db
+    command: mongod --quiet --logpath /dev/null
+
   redis:
     image: redis:7-alpine
     ports:
@@ -17,11 +27,11 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/kivo
       - REDIS_URL=redis://redis:6379
-      - SUPABASE_URL=${SUPABASE_URL}
-      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
-      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - XAI_API_KEY=${XAI_API_KEY}
     depends_on:
+      - mongodb
       - redis
     volumes:
       - .:/app
@@ -29,4 +39,5 @@ services:
       - /app/.next
 
 volumes:
+  mongodb_data:
   redis_data:

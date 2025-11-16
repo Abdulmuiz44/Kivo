@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { researchRuns } from '@/lib/research-store';
+import { getResearchRun } from '@/lib/research-store';
 import jsPDF from 'jspdf';
 
 export async function GET(request: NextRequest, { params }: { params: { runId: string } }) {
   const { runId } = params;
-  const run = researchRuns.get(runId);
+  const run = await getResearchRun(runId);
 
   if (!run || !run.payload) {
     return NextResponse.json({ error: 'Payload not available' }, { status: 404 });

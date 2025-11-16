@@ -6,8 +6,7 @@ const nextConfig = {
     domains: ['localhost'],
   },
   env: {
-    SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
+    MONGODB_URI: process.env.MONGODB_URI,
     REDIS_URL: process.env.REDIS_URL,
     XAI_API_KEY: process.env.XAI_API_KEY,
   },
