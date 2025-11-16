@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Kivo",
+    "slug": "kivo",
+    "scheme": "kivo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": ["android", "ios", "web"],
+    "entryPoint": "expo-router/entry",
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    }
+  }
+}
